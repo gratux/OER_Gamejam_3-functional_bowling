@@ -17,5 +17,5 @@ Didactic and game experts are brought together and co-create educational games w
 - Edgeloard - a game to learn trigonometry without even calculating. The goal is to find a way (a set of steps) to find out the length of a desired edge (pink) or the arclength of a questioned arc.
 - Math Tinder - a swiping game to estimate whether a questioned quantity is larger (swipe right) or less (swipe left) or equal (swipe up)
 - Function shooter - you are in a spaceship and you can control a function gun to shoot math symbols that are approaching your spaceship. By tuning the function parameters you can control the laser beam and aim at the symbols and in such a way learn how to handle functions. The goal is to collect the shot math symbols to collect math confidence.
-- corn circles - you are the commander of a corn cicle production alien team and you have to evaluate whether your workers have created the right size (area) of corn cycles. You learn how to sum up areas in a clever way
+- corn circles - you are the commander of a corn circle production alien team and you have to evaluate whether your workers have created the right size (area) of corn circle. You learn how to sum up areas in a clever way
 - math wizard - a jump and run game where can beat monsters by summing up fractions
