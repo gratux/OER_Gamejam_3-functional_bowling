@@ -13,7 +13,7 @@ Gamejams - especially when done in real life - are a really cool way to work tog
 We want to combine open source with game development to improve education and thus organise OER gamejams which focus on the development of small minigames that have an educational value.
 Didactic and game experts are brought together and co-create educational games which can be used adopted or reinvented in the next jam - the jam must go on :)
 
-## Which games have been created so far?
+## Which games have been created in the previous OER Gamejams so far?
 - Edgeloard - a game to learn trigonometry without even calculating. The goal is to find a way (a set of steps) to find out the length of a desired edge (pink) or the arclength of a questioned arc.
 - Math Tinder - a swiping game to estimate whether a questioned quantity is larger (swipe right) or less (swipe left) or equal (swipe up)
 - Function shooter - you are in a spaceship and you can control a function gun to shoot math symbols that are approaching your spaceship. By tuning the function parameters you can control the laser beam and aim at the symbols and in such a way learn how to handle functions. The goal is to collect the shot math symbols to collect math confidence.
