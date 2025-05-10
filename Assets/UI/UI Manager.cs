@@ -1,5 +1,8 @@
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.UI;
+using System.Collections.Generic;
+
 
 public class UIManager : MonoBehaviour
 {
@@ -29,8 +32,9 @@ public class UIManager : MonoBehaviour
         InitializeMainMenu();
     }
 
-    public void GameToStatsMenu() //Game -> StatsLevel Menu -> Main Menu
+    public void GameToStatsMenu(int starsEarned) //Game -> StatsLevel Menu -> Main Menu
     {
+        ShowLevelStars(starsEarned);
         UISwitchAnim(inGameMenu, statsLevelMenu, true, menuTransitionType, false, menuSwitchAnimDuration);
     }
     public void StatsMenuToMainMenu() //TODO CHECK
@@ -225,6 +229,26 @@ public class UIManager : MonoBehaviour
                 }
 
             });
+    }
+
+    public List<Image> goldStars;
+    public List<Image> greyStars;
+
+    public void ShowLevelStars(int starsEarned)
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            if (i < starsEarned)
+            {
+                goldStars[i].enabled = true;
+                greyStars[i].enabled = false;
+            }
+            else
+            {
+                goldStars[i].enabled = false;
+                greyStars[i].enabled = true;
+            }
+        }
     }
 }
 
