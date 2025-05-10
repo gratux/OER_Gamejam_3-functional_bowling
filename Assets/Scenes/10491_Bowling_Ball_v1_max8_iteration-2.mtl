@@ -1,0 +1,18 @@
+# Apple ModelI/O MTL File: 10491_Bowling_Ball_v1_max8_iteration-2.mtl
+
+newmtl 01___Default
+	map_Kd 01___Default-color.png
+	Kd 1 1 1
+	Ka 0 0 0
+	Ks 0
+	ao 0
+	subsurface 0
+	map_metallic 01___Default-metallic.png
+	specularTint 0
+	map_roughness 01___Default-roughness.png
+	anisotropicRotation 0
+	sheen 0.05
+	sheenTint 0
+	clearCoat 0
+	clearCoatGloss 0
+
