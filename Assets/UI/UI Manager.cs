@@ -126,10 +126,10 @@ public class UIManager : MonoBehaviour
         Application.Quit();
     }
 
-    public void LoadLevel(string levelName)
+    public void LoadLevel(int levelNum)
     {
         //UISwitchAnim(levelSelectorMenu, levelName, true, menuTransitionType, false, menuSwitchAnimDuration);
-        SceneManager.LoadScene(levelName, LoadSceneMode.Single);
+        SceneManager.LoadScene(levelNum, LoadSceneMode.Single);
         
         levelSelectorMenu.gameObject.SetActive(false);
         mainMenu.gameObject.SetActive(false);
