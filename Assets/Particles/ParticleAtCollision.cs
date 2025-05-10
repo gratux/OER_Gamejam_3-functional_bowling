@@ -1,0 +1,31 @@
+using System;
+using System.Collections.Generic;
+using JetBrains.Annotations;
+using UnityEditor;
+using UnityEngine;
+
+namespace Particles
+{
+    public class ParticleAtCollision : MonoBehaviour
+    {
+        public ParticleSystem collisionParticles;
+        [CanBeNull] public string collisionTag = null;
+    
+        private void OnCollisionEnter(Collision other)
+        {
+            if (collisionTag is not null && !other.gameObject.CompareTag(collisionTag))
+            {
+                return; // skip if the tag does not match the configured
+            }
+
+            List<ContactPoint> contactPoints = new();
+            other.GetContacts(contactPoints);
+            contactPoints.ForEach(cp =>
+            {
+                var ps = Instantiate(collisionParticles, cp.point, Quaternion.identity);
+                ps.gameObject.SetActive(true);
+                Destroy(ps.gameObject, ps.main.duration);
+            });
+        }
+    }
+}
