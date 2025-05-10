@@ -30,6 +30,12 @@ public class BallLauncher : MonoBehaviour
     private Vector3 exitVelocity;
     private Coroutine checkStoppedCoroutine;
 
+    [Header("Ball Physics")]
+    public float rotationSpeed = 5f; // Controls how quickly the ball rotates to match velocity direction
+    public float rollingTorqueMultiplier = 0.2f; // Significantly reduced from 0.5f
+    public float angularDamping = 0.8f; // More aggressive damping (lower = faster slowdown)
+    public float velocityDamping = 0.98f; // Add direct velocity damping
+
     void Start()
     {
         Debug.Log("BallLauncher initialized");
@@ -56,6 +62,65 @@ public class BallLauncher : MonoBehaviour
         }
 
         ResetBall();
+    }
+
+    void FixedUpdate()
+    {
+        if (isPhysicsActive && bowlingBall != null)
+        {
+            Rigidbody rb = bowlingBall.GetComponent<Rigidbody>();
+            if (rb != null && !rb.isKinematic)
+            {
+                // Apply velocity damping first - this is crucial to prevent self-acceleration
+                rb.velocity *= velocityDamping;
+
+                float velocityMagnitude = rb.velocity.magnitude;
+
+                // Only apply torques if the ball is moving at a noticeable speed
+                if (velocityMagnitude > 0.1f)
+                {
+                    // Get the velocity direction
+                    Vector3 velocityDir = rb.velocity.normalized;
+
+                    // Calculate alignment torque - reduced intensity
+                    Vector3 currentForward = bowlingBall.transform.forward;
+                    Vector3 alignmentTorque = Vector3.Cross(currentForward, velocityDir) * (rotationSpeed * 0.5f);
+
+                    // Calculate rolling torque - greatly reduced and with quadratic falloff
+                    Vector3 rollingAxis = Vector3.Cross(Vector3.up, velocityDir).normalized;
+
+                    // Use much lower multiplier and add quadratic scaling to slow down faster at lower speeds
+                    float rollingFactor = Mathf.Min(velocityMagnitude * rollingTorqueMultiplier, 1.0f);
+                    float adjustedRollingTorque = rollingFactor * rollingFactor; // Quadratic falloff
+
+                    // Apply torques with reduced intensity
+                    rb.AddTorque(alignmentTorque, ForceMode.Acceleration);
+                    rb.AddTorque(rollingAxis * adjustedRollingTorque, ForceMode.Acceleration);
+
+                    // Apply aggressive angular velocity damping
+                    rb.angularVelocity *= angularDamping;
+                }
+                else
+                {
+                    // When moving very slowly, rapidly decrease angular velocity
+                    rb.angularVelocity *= 0.7f; // Much more aggressive damping when nearly stopped
+
+                    // If barely moving, stop completely to prevent perpetual motion
+                    if (velocityMagnitude < 0.05f)
+                    {
+                        rb.velocity = Vector3.zero;
+                        rb.angularVelocity = Vector3.zero;
+
+                        // Optional: Switch to isKinematic to guarantee complete stop
+                        if (velocityMagnitude < 0.01f)
+                        {
+                            rb.isKinematic = true;
+                            isPhysicsActive = false;
+                        }
+                    }
+                }
+            }
+        }
     }
 
     void Update()
@@ -113,6 +178,25 @@ public class BallLauncher : MonoBehaviour
         // Disable UI during launch
         if (launchButton != null) launchButton.interactable = false;
         if (trajectoryDisplay != null) trajectoryDisplay.gameObject.SetActive(false);
+    }
+
+    // Helper method to make the ball face the direction of movement
+    private void RotateBallTowardsVelocity(Vector3 velocity)
+    {
+        if (velocity.magnitude < 0.1f) return;
+
+        // Get the forward direction we want the ball to face
+        Vector3 targetDirection = velocity.normalized;
+
+        // Create a rotation that looks in the direction of movement
+        Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
+
+        // Smoothly rotate the ball towards the target rotation
+        bowlingBall.transform.rotation = Quaternion.Slerp(
+            bowlingBall.transform.rotation,
+            targetRotation,
+            rotationSpeed * Time.deltaTime
+        );
     }
 
     private void PrepareBallForLaunch()
@@ -198,6 +282,9 @@ public class BallLauncher : MonoBehaviour
             // Move the ball
             bowlingBall.transform.position = newPosition;
 
+            // Rotate the ball to face the direction of movement
+            RotateBallTowardsVelocity(exitVelocity);
+
             // Apply ball rolling
             ApplyBallRolling(tangentDirection, stepDistance);
 
@@ -282,6 +369,15 @@ public class BallLauncher : MonoBehaviour
 
                 // Now it's safe to set velocities
                 rb.velocity = exitVelocity * exitVelocityMultiplier;
+
+                // Make sure constraints don't prevent rotation
+                rb.constraints = RigidbodyConstraints.None;
+
+                // Set initial rotation to match velocity direction
+                if (exitVelocity.magnitude > 0.1f)
+                {
+                    bowlingBall.transform.rotation = Quaternion.LookRotation(exitVelocity.normalized);
+                }
 
                 // Add some spin based on the trajectory
                 Vector3 spin = Vector3.Cross(Vector3.up, exitVelocity.normalized) * launchSpeed * 0.5f;
