@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6824233030375022365}
   - component: {fileID: 638441695453364632}
   - component: {fileID: 346007308576530417}
+  - component: {fileID: 3943737138031865007}
   - component: {fileID: 7709084404003509815}
   m_Layer: 0
   m_Name: Bowling Pin
@@ -30,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 0.18, y: 0.18, z: 0.18}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6282294756985883889}
@@ -80,7 +81,7 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 5
   m_Convex: 1
   m_CookingOptions: 30
@@ -102,10 +103,33 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 3.67934, y: 4.25526, z: 0.5614697}
   m_Center: {x: 0.0615412, y: -0.118335925, z: 0.2192654}
+--- !u!136 &3943737138031865007
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 891157391030918983}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 6.01917
+  m_Height: 38.161884
+  m_Direction: 2
+  m_Center: {x: 0.17104942, y: 0.16864324, z: 18.580952}
 --- !u!114 &7709084404003509815
 MonoBehaviour:
   m_ObjectHideFlags: 0
