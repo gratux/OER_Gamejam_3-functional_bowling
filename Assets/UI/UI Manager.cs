@@ -1,7 +1,9 @@
+using System.Collections;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 
 public class UIManager : MonoBehaviour
@@ -16,17 +18,32 @@ public class UIManager : MonoBehaviour
     public RectTransform exitConfirmMenu;
     public RectTransform statsLevelMenu;
     public RectTransform levelSelectorMenu;
+    public RectTransform pauseMenu;
+
 
 
     private Tweener _blurTween;
     private Tweener _hideWidgetTween;
     private Tweener _showWidgetTween;
-
+/*
     private void Awake()
     {
         mainMenu.gameObject.SetActive(false);
     }
-
+*/
+    public static UIManager Instance;
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     private void Start()
     {
         InitializeMainMenu();
@@ -59,25 +76,106 @@ public class UIManager : MonoBehaviour
         UISwitchAnim(null, mainMenu, false, UITransitionType.Fade, false, 0.7f);
     }
 
+    public void OpenPauseMenu()
+    {
+        UISwitchAnim(null, inGameMenu, false, UITransitionType.Fade, false, 0.5f);
+
+    }
     public void MainToExitGame()
     {
         UISwitchAnim(mainMenu, exitConfirmMenu, true, menuTransitionType, false, menuSwitchAnimDuration);
     }
 
+ 
     public void ExitGameToMain()
     {
-        UISwitchAnim(exitConfirmMenu, mainMenu, false, menuTransitionType, false, menuSwitchAnimDuration);
+        // Suponemos que el MainMenu está en "MainMenuScene"
+        string mainMenuSceneName = "Always Active Scene"; // <- Cambia esto al nombre real de tu escena de menú
+        string currentSceneName = SceneManager.GetActiveScene().name;
+
+        // Evita recargar si ya estamos en el menú
+        if (currentSceneName == mainMenuSceneName)
+            return;
+
+        // Carga la escena del menú principal de forma aditiva
+        SceneManager.LoadScene(mainMenuSceneName, LoadSceneMode.Additive);
+
+        // Inicia una corrutina para descargar la escena anterior después de que cargue el menú
+        StartCoroutine(UnloadCurrentSceneAfterDelay(currentSceneName));
+        TogglePauseMenu();
     }
+
+    private IEnumerator UnloadCurrentSceneAfterDelay(string sceneToUnload)
+    {
+        // Espera un frame para que la nueva escena se cargue correctamente
+        yield return null;
+
+        // Opcional: cambia la escena activa a Always Active si lo necesitas
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName("Always Active Scene"));
+
+        // Descarga la escena anterior
+        SceneManager.UnloadSceneAsync(sceneToUnload);
+
+        // Muestra el menú principal
+        UISwitchAnim(null, mainMenu, false, UITransitionType.Fade, false, menuSwitchAnimDuration);
+    }
+
 
     public void ExitGame()
     {
         Application.Quit();
     }
 
-    public void LoadLevel(RectTransform levelName)
+    public void LoadLevel(string levelName)
     {
-        UISwitchAnim(levelSelectorMenu, levelName, true, menuTransitionType, false, menuSwitchAnimDuration);
+        //UISwitchAnim(levelSelectorMenu, levelName, true, menuTransitionType, false, menuSwitchAnimDuration);
+        SceneManager.LoadScene(levelName, LoadSceneMode.Single);
+        
+        levelSelectorMenu.gameObject.SetActive(false);
+        mainMenu.gameObject.SetActive(false);
+        inGameMenu.gameObject.SetActive(false);
+        statsLevelMenu.gameObject.SetActive(false);
+        exitConfirmMenu.gameObject.SetActive(false);
+        blurCanvas.gameObject.SetActive(false);
+
     }
+
+    void Update()
+    {
+        if (SceneManager.GetActiveScene().name == "Always Active Scene") return;
+        
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            TogglePauseMenu();
+        }
+    }
+    
+    private bool isPauseMenuOpen = false;
+
+
+    public void TogglePauseMenu()
+    {
+        if (isPauseMenuOpen)
+        {
+            //UISwitchAnim(pauseMenu, null, false, UITransitionType.Fade, false, menuSwitchAnimDuration);
+            pauseMenu.gameObject.SetActive(false);
+            isPauseMenuOpen = false;
+            Time.timeScale = 1f;
+        }
+        else
+        {
+            //UISwitchAnim(null, pauseMenu, false, UITransitionType.Fade, false, menuSwitchAnimDuration);
+            pauseMenu.gameObject.SetActive(true);
+            isPauseMenuOpen = true;
+            Time.timeScale = 0f;
+        }
+    }
+    public void ResumeButton()
+    {
+        TogglePauseMenu();
+    }
+
+    
 
     void UISwitchAnim(RectTransform hideWidget, RectTransform showWidget, bool moveLeft, UITransitionType transitionEffect, bool affectGameplay, float animDuration)
     {
