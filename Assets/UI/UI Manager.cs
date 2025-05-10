@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour
     public RectTransform mainMenu;
     public RectTransform inGameMenu;
     public RectTransform exitConfirmMenu;
+    public RectTransform statsLevelMenu;
 
     private Tweener _blurTween;
     private Tweener _hideWidgetTween;
@@ -26,9 +27,13 @@ public class UIManager : MonoBehaviour
         InitializeMainMenu();
     }
 
-    public void GameToMainMenu()
+    public void GameToStatsMenu() //Game -> StatsLevel Menu -> Main Menu
     {
-        UISwitchAnim(inGameMenu, mainMenu, true, menuTransitionType, false, menuSwitchAnimDuration);
+        UISwitchAnim(inGameMenu, statsLevelMenu, true, menuTransitionType, false, menuSwitchAnimDuration);
+    }
+    public void StatsMenuToMainMenu() //TODO CHECK
+    {
+        UISwitchAnim(statsLevelMenu, mainMenu, false, menuTransitionType, false, menuSwitchAnimDuration);
     }
 
     public void MainMenuToGame()
