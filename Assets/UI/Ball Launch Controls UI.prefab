@@ -1792,6 +1792,15 @@ MonoBehaviour:
   functionCard_1: {fileID: 7852624496501559441}
   functionCard_2: {fileID: 7068081829038187555}
   functionCard_3: {fileID: 5026847134351676297}
+  functionSpriteList:
+  - functionType: 0
+    sprite: {fileID: 0}
+  - functionType: 1
+    sprite: {fileID: 0}
+  - functionType: 2
+    sprite: {fileID: 0}
+  - functionType: 3
+    sprite: {fileID: 0}
 --- !u!1 &7761448152036686682
 GameObject:
   m_ObjectHideFlags: 0
