@@ -136,7 +136,7 @@ public class UIManager : MonoBehaviour
         
         levelSelectorMenu.gameObject.SetActive(false);
         mainMenu.gameObject.SetActive(false);
-        inGameMenu.gameObject.SetActive(false);
+        inGameMenu.gameObject.SetActive(true);//yes
         statsLevelMenu.gameObject.SetActive(false);
         exitConfirmMenu.gameObject.SetActive(false);
         blurCanvas.gameObject.SetActive(false);
