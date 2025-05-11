@@ -727,6 +727,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2458014365625000256, guid: 360f2156f327ea24e84c0af424437058, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2729505531804884532, guid: 360f2156f327ea24e84c0af424437058, type: 3}
       propertyPath: m_Name
       value: UI Manager
