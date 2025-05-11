@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     public Ball currentBall;
     public BallControls currentBallControls;
 
+    public ControlsUI ballControlsUI;
+
     public Button ballLaunchButton;
     
     
@@ -83,6 +85,9 @@ public class GameManager : MonoBehaviour
             currentBallControls.ballLauncher.bowlingBall = currentBall;
             currentBallControls.ballLauncher.launchButton = ballLaunchButton;
             currentBallControls.ballLauncher.ballTrail = currentBall.transform.Find("TrailParticles").gameObject.GetComponent<ParticleSystem>();
+            ballControlsUI.trajectoryDisplay = currentBallControls.trajectoryDisplay;
+            ballControlsUI.functionGrid.trajectoryDisplay = currentBallControls.trajectoryDisplay;
+            currentBallControls.ballLauncher.controlsUI = ballControlsUI;
         }
         else
         {

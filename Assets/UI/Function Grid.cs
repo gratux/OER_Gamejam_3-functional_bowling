@@ -107,6 +107,16 @@ public class FunctionGrid : MonoBehaviour
             // Pass the card index, not the function type
             controlsUI.SetFunctionType(cardIndex);
         }
+        // Update the trajectory display
+        trajectoryDisplay.SetFunctionType((int)selectedFunction);
+
+        // If we have reference to ControlsUI, tell it to update
+        if (controlsUI != null)
+        {
+            controlsUI.SetFunctionType(cardIndex);
+        }
+
+        Debug.Log($"Selected function: {selectedFunction}");
     }
 
     // Method to swap a function type on a specific card

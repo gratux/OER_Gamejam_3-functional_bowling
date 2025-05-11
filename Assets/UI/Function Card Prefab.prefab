@@ -51,6 +51,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   functionFormulaImage: {fileID: 2483587703251915486}
+  functionButton: {fileID: 3139134245113772494}
 --- !u!1 &3703816383203355674
 GameObject:
   m_ObjectHideFlags: 0

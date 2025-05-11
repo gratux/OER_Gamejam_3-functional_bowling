@@ -59,6 +59,7 @@
     <Compile Include="Assets\UI\Function Grid.cs" />
     <Compile Include="Assets\matvii develope\endscene.cs" />
     <Compile Include="Assets\matvii develope\trigger.cs" />
+    <Compile Include="Assets\UI\Controls UI.cs" />
     <Compile Include="Assets\Ball Launching\Ball.cs" />
     <Compile Include="Assets\UI\Function Card.cs" />
     <Compile Include="Assets\Ball Launching\Trajectory Display.cs" />

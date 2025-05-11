@@ -6,6 +6,9 @@ using System.Collections;
 
 public class BallLauncher : MonoBehaviour
 {
+    [Header("UI References")]
+    public ControlsUI controlsUI;
+
     [Header("References")]
     public TrajectoryDisplay trajectoryDisplay;
     public Ball bowlingBall;
@@ -492,6 +495,12 @@ public class BallLauncher : MonoBehaviour
         exitVelocity = Vector3.zero;
         
         ballTrail.gameObject.SetActive(true); // reenable trail
+
+        // Notify UI that controls can be active again
+        if (controlsUI != null)
+        {
+            controlsUI.OnBallReset();
+        }
     }
 
     // Public method that can be called to force a reset

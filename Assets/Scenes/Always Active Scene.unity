@@ -289,6 +289,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &397182346 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5142620753083953715, guid: 360f2156f327ea24e84c0af424437058, type: 3}
+  m_PrefabInstance: {fileID: 432307135491970678}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0461d97dd5bbdb64f8838cb17181e77f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &401055352 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8064517837309484359, guid: 360f2156f327ea24e84c0af424437058, type: 3}
@@ -607,6 +618,7 @@ MonoBehaviour:
   ballControlsPrefab: {fileID: 8382287004205174875, guid: e491de0ab9105a3409e23deb9c78f2f9, type: 3}
   currentBall: {fileID: 0}
   currentBallControls: {fileID: 0}
+  ballControlsUI: {fileID: 397182346}
   ballLaunchButton: {fileID: 1006159902}
   goldStarsLevelSelector:
   - {fileID: 781527006}
