@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    
+
     public Ball ballPrefab;
     public BallControls ballControlsPrefab;
     public Ball currentBall;
@@ -14,8 +14,8 @@ public class GameManager : MonoBehaviour
     public ControlsUI ballControlsUI;
 
     public Button ballLaunchButton;
-    
-    
+
+
     public List<Level> levels = new List<Level>() // store level data
     {
         new Level(1, 3, 3),//3 parameter is maxAttemps
@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
         new Level(4, 3, 3),
         new Level(5, 3, 3)
     };
-    
+
     private void Awake()
     {
         if (Instance == null)
@@ -41,23 +41,38 @@ public class GameManager : MonoBehaviour
     {
         UIManager.Instance.InitializeMainMenu();
     }
-    
 
     public void endLevel(int starsEarned, int nextLevel)//with next level i can know which level i passed (nextlevel-1)
     {
-        GameManager.Instance.SetStarsLevel(starsEarned);
+        // Clean up existing ball and controls
+        if (currentBall != null)
+        {
+            Destroy(currentBall.gameObject);
+            currentBall = null;
+        }
+
+        if (currentBallControls != null)
+        {
+            Destroy(currentBallControls.gameObject);
+            currentBallControls = null;
+        }
+
+        // Reset ball counter
+        ballsLaunched = 0;
+
+        SetStarsLevel(starsEarned);
         UIManager.Instance.GameToStatsMenu(starsEarned);
         //TODO SAVE STARS EARNED
-        
+
         //UIManager.Instance.ExitGameToMain();
-        
+
         int levelIndex = nextLevel - 1;
         if (levelIndex >= 0 && levelIndex < levels.Count) //save stars earned
         {
             levels[levelIndex].registerResult(starsEarned);//TODO ShootsMade for now useless
         }
     }
-    
+
     public void SpawnBall()
     {
         GameObject spawnPoint = GameObject.Find("SpawnPointBall");
@@ -102,15 +117,15 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < 3; i++)
         {
             bool activaDorada = i < earnedStars;
-            goldStarsLevelSelector[i].enabled  = activaDorada;
-            greyStarsLevelSelector[i].enabled  = !activaDorada;
+            goldStarsLevelSelector[i].enabled = activaDorada;
+            greyStarsLevelSelector[i].enabled = !activaDorada;
         }
     }
 
     public void ballStoped()
     {
         ballsLaunched++;
-        
+
         Level level = levels[UIManager.Instance.currentLevel];
         level.ballUsed();
         print(ballsLaunched);
