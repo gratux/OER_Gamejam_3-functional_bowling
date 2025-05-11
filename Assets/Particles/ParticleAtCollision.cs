@@ -1,7 +1,5 @@
-using System;
 using System.Collections.Generic;
 using JetBrains.Annotations;
-using UnityEditor;
 using UnityEngine;
 
 namespace Particles
@@ -10,7 +8,7 @@ namespace Particles
     {
         public ParticleSystem collisionParticles;
         [CanBeNull] public string collisionTag = null;
-    
+   
         private void OnCollisionEnter(Collision other)
         {
             if (collisionTag is not null && !other.gameObject.CompareTag(collisionTag))
@@ -23,6 +21,7 @@ namespace Particles
             contactPoints.ForEach(cp =>
             {
                 var ps = Instantiate(collisionParticles, cp.point, Quaternion.identity);
+                ps.gameObject.transform.localScale *= gameObject.transform.localScale.magnitude;
                 ps.gameObject.SetActive(true);
                 Destroy(ps.gameObject, ps.main.duration);
             });

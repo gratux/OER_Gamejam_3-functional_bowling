@@ -95,7 +95,11 @@ GameObject:
   - component: {fileID: 5668220166630588768}
   - component: {fileID: 3434957979974780971}
   - component: {fileID: 8096503369094877662}
+<<<<<<< HEAD
   - component: {fileID: 6214068028175960525}
+=======
+  - component: {fileID: 178021147397091941}
+>>>>>>> f4c6b6f5d114d4fccb10ecd532e7742b95d326fe
   m_Layer: 0
   m_Name: Bowling Pin
   m_TagString: Untagged
@@ -185,7 +189,11 @@ MonoBehaviour:
   verticalBounceDamping: 0.8
   maxVerticalVelocity: 3
   constrainRotation: 1
+<<<<<<< HEAD
 --- !u!114 &6214068028175960525
+=======
+--- !u!114 &178021147397091941
+>>>>>>> f4c6b6f5d114d4fccb10ecd532e7742b95d326fe
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -194,6 +202,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 3904151123962872079}
   m_Enabled: 1
   m_EditorHideFlags: 0
+<<<<<<< HEAD
   m_Script: {fileID: 11500000, guid: 027e2d2d6b7cb214ab8eec7fe609881f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+=======
+  m_Script: {fileID: 11500000, guid: 8e5c5d08ebe782679a2635b7569d2d06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collisionParticles: {fileID: 3458024069485726242, guid: 85dd56134c36cf2d2a4b24df90d1de56, type: 3}
+  collisionTag: Player
+>>>>>>> f4c6b6f5d114d4fccb10ecd532e7742b95d326fe
