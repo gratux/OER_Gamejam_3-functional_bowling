@@ -81,6 +81,7 @@ public class GameManager : MonoBehaviour
             currentBallControls.trajectoryDisplay.bowlingBall = currentBall;
             currentBallControls.ballLauncher.bowlingBall = currentBall;
             currentBallControls.ballLauncher.launchButton = ballLaunchButton;
+            currentBallControls.ballLauncher.ballTrail = currentBall.transform.Find("TrailParticles").gameObject.GetComponent<ParticleSystem>();
         }
         else
         {

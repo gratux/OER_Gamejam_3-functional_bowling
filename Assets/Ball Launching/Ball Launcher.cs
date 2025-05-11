@@ -10,6 +10,7 @@ public class BallLauncher : MonoBehaviour
     public TrajectoryDisplay trajectoryDisplay;
     public Ball bowlingBall;
     public Button launchButton;  // Assign your UI button here
+    public ParticleSystem ballTrail;
 
     [Header("Launch Settings")]
     public float launchSpeed = 10f;  // Speed of the ball along the spline
@@ -448,6 +449,8 @@ public class BallLauncher : MonoBehaviour
     {
         Debug.Log("ResetBall called");
 
+        ballTrail.gameObject.SetActive(false); // disable trail
+        
         if (bowlingBall != null)
         {
             // Reset position
@@ -487,6 +490,8 @@ public class BallLauncher : MonoBehaviour
         isLaunching = false;
         isPhysicsActive = false;
         exitVelocity = Vector3.zero;
+        
+        ballTrail.gameObject.SetActive(true); // reenable trail
     }
 
     // Public method that can be called to force a reset
