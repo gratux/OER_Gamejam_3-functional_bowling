@@ -434,7 +434,6 @@ public class BallLauncher : MonoBehaviour
                 // Reset counter if velocity increases above threshold
                 consecutiveStoppedFrames = 0;
             }
-
             // Wait before checking again
             yield return new WaitForSeconds(checkStoppedInterval);
         }
@@ -450,6 +449,7 @@ public class BallLauncher : MonoBehaviour
 
         if (bowlingBall != null)
         {
+            GameManager.Instance.ballStoped();
             // Reset position
             Vector3 originPos = trajectoryDisplay != null ?
                                trajectoryDisplay.transform.position :

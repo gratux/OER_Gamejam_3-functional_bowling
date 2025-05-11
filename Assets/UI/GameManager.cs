@@ -13,13 +13,14 @@ public class GameManager : MonoBehaviour
 
     public Button ballLaunchButton;
     
+    
     public List<Level> levels = new List<Level>() // store level data
     {
-        new Level(1, 3, 4),//3 parameter is maxAttemps
-        new Level(2, 4, 5),
-        new Level(3, 3, 5),
-        new Level(4, 3, 6),
-        new Level(5, 3, 7)
+        new Level(1, 3, 3),//3 parameter is maxAttemps
+        new Level(2, 4, 3),
+        new Level(3, 3, 3),
+        new Level(4, 3, 3),
+        new Level(5, 3, 3)
     };
     
     private void Awake()
@@ -42,16 +43,16 @@ public class GameManager : MonoBehaviour
 
     public void endLevel(int starsEarned, int nextLevel)//with next level i can know which level i passed (nextlevel-1)
     {
+        GameManager.Instance.SetStarsLevel(starsEarned);
         UIManager.Instance.GameToStatsMenu(starsEarned);
         //TODO SAVE STARS EARNED
         
-        GameManager.Instance.SetStarsLevel(starsEarned);
         //UIManager.Instance.ExitGameToMain();
         
         int levelIndex = nextLevel - 1;
         if (levelIndex >= 0 && levelIndex < levels.Count) //save stars earned
         {
-            levels[levelIndex].registerResult(starsEarned, 1);//TODO ShootsMade for now useless
+            levels[levelIndex].registerResult(starsEarned);//TODO ShootsMade for now useless
         }
     }
     
@@ -99,6 +100,18 @@ public class GameManager : MonoBehaviour
             greyStarsLevelSelector[i].enabled  = !activaDorada;
         }
     }
+
+    public void ballStoped()
+    {
+        ballsLaunched++;
+        
+        Level level = levels[UIManager.Instance.currentLevel];
+        level.ballUsed();
+        print(ballsLaunched);
+    }
+
+    public int ballsLaunched = 0;
+
 }
 public class Level
 {
@@ -114,14 +127,23 @@ public class Level
     {
         this.numLevel = numLevel;
         this.earnedStars = 0;
-        this.shoots = 0;
+        //this.shoots = 0;
         this.numPins = numPins;
         this.ballsAvailable = ballsAvailable;
     }
 
-    public void registerResult(int newStarsEraned, int shootsMade)
+    public void registerResult(int newStarsEraned)
     {
         earnedStars = Mathf.Max(earnedStars, newStarsEraned); //if user gets more stars than before
-        shoots = shootsMade;
+    }
+
+    public void ballUsed()
+    {
+        ballsAvailable--;
+        if (0 == this.ballsAvailable)
+        {
+            //go to stats menu and reset attemps
+            ballsAvailable = 3;
+        }
     }
 }

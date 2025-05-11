@@ -23,6 +23,8 @@ public class UIManager : MonoBehaviour
     private Tweener _blurTween;
     private Tweener _hideWidgetTween;
     private Tweener _showWidgetTween;
+
+    public int currentLevel = 0;
 /*
     private void Awake()
     {
@@ -45,7 +47,7 @@ public class UIManager : MonoBehaviour
 
     public void GameToStatsMenu(int starsEarned) //Game -> StatsLevel Menu -> Main Menu
     {
-        TogglePauseMenu();
+        //TogglePauseMenu();
         mainMenu.gameObject.SetActive(false);
         ShowLevelStars(starsEarned);
         statsLevelMenu.gameObject.SetActive(true);
@@ -139,6 +141,8 @@ public class UIManager : MonoBehaviour
         statsLevelMenu.gameObject.SetActive(false);
         exitConfirmMenu.gameObject.SetActive(false);
         blurCanvas.gameObject.SetActive(false);
+
+        currentLevel = levelNum;
 
         SceneManager.sceneLoaded += OnSceneLoaded;
         print("asdasd");
