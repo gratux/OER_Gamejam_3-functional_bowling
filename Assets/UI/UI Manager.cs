@@ -25,12 +25,12 @@ public class UIManager : MonoBehaviour
     private Tweener _showWidgetTween;
 
     public int currentLevel = 0;
-/*
-    private void Awake()
-    {
-        mainMenu.gameObject.SetActive(false);
-    }
-*/
+    /*
+        private void Awake()
+        {
+            mainMenu.gameObject.SetActive(false);
+        }
+    */
     public static UIManager Instance;
     void Awake()
     {
@@ -58,7 +58,7 @@ public class UIManager : MonoBehaviour
     }
     public void StatsMenuToLevelSelector() //TODO CHECK
     {
-        
+
         UISwitchAnim(statsLevelMenu, levelSelectorMenu, false, menuTransitionType, false, menuSwitchAnimDuration);
     }
     public void LevelSelectorToMainMenu() //TODO CHECK
@@ -82,14 +82,13 @@ public class UIManager : MonoBehaviour
     public void OpenPauseMenu()
     {
         UISwitchAnim(null, inGameMenu, false, UITransitionType.Fade, false, 0.5f);
-
     }
+
     public void MainToExitGame()
     {
         UISwitchAnim(mainMenu, exitConfirmMenu, true, menuTransitionType, false, menuSwitchAnimDuration);
     }
 
- 
     public void ExitGameToMain()
     {
         // Suponemos que el MainMenu está en "MainMenuScene"
@@ -100,12 +99,35 @@ public class UIManager : MonoBehaviour
         if (currentSceneName == mainMenuSceneName)
             return;
 
+        // Clean up existing game objects
+        CleanupGameObjects();
+
         // Carga la escena del menú principal de forma aditiva
         SceneManager.LoadScene(mainMenuSceneName, LoadSceneMode.Additive);
 
         // Inicia una corrutina para descargar la escena anterior después de que cargue el menú
         StartCoroutine(UnloadCurrentSceneAfterDelay(currentSceneName));
         TogglePauseMenu();
+    }
+
+    // Add this helper method to clean up game objects
+    private void CleanupGameObjects()
+    {
+        // Clean up existing ball and controls
+        if (GameManager.Instance.currentBall != null)
+        {
+            Destroy(GameManager.Instance.currentBall.gameObject);
+            GameManager.Instance.currentBall = null;
+        }
+
+        if (GameManager.Instance.currentBallControls != null)
+        {
+            Destroy(GameManager.Instance.currentBallControls.gameObject);
+            GameManager.Instance.currentBallControls = null;
+        }
+
+        // Reset ball counter
+        GameManager.Instance.ballsLaunched = 0;
     }
 
     private IEnumerator UnloadCurrentSceneAfterDelay(string sceneToUnload)
@@ -123,18 +145,19 @@ public class UIManager : MonoBehaviour
         UISwitchAnim(null, mainMenu, false, UITransitionType.Fade, false, menuSwitchAnimDuration);
     }
 
-
     public void ExitGame()
     {
         Application.Quit();
     }
 
-
     public void LoadLevel(int levelNum)
     {
+        // Clean up existing game objects first
+        CleanupGameObjects();
+
         //UISwitchAnim(levelSelectorMenu, levelName, true, menuTransitionType, false, menuSwitchAnimDuration);
         SceneManager.LoadScene(levelNum, LoadSceneMode.Single);
-        
+
         levelSelectorMenu.gameObject.SetActive(false);
         mainMenu.gameObject.SetActive(false);
         inGameMenu.gameObject.SetActive(true);//yes
@@ -146,11 +169,13 @@ public class UIManager : MonoBehaviour
 
         SceneManager.sceneLoaded += OnSceneLoaded;
         print("asdasd");
-
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        // Unsubscribe to prevent multiple calls
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+
         if (scene.name != "Always Active Scene")
         {
             // Create a spawn point if it doesn't exist
@@ -170,30 +195,42 @@ public class UIManager : MonoBehaviour
 
     public void ReplayCurrentLevel()
     {
+        // Clean up existing game objects first
+        CleanupGameObjects();
+
+        // Close all menus and ensure in-game menu is active
+        levelSelectorMenu.gameObject.SetActive(false);
+        mainMenu.gameObject.SetActive(false);
+        statsLevelMenu.gameObject.SetActive(false);
+        exitConfirmMenu.gameObject.SetActive(false);
+        pauseMenu.gameObject.SetActive(false);
+        blurCanvas.gameObject.SetActive(false);
+
+        // Make sure the in-game menu is activated again
+        inGameMenu.gameObject.SetActive(true);
+
+        // Reset time scale in case it was paused
+        Time.timeScale = 1f;
+
+        // Reload the current scene
         Scene currentScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(currentScene.buildIndex, LoadSceneMode.Single);
 
-        levelSelectorMenu.gameObject.SetActive(false);
-        mainMenu.gameObject.SetActive(false);
-        inGameMenu.gameObject.SetActive(false);
-        statsLevelMenu.gameObject.SetActive(false);
-        exitConfirmMenu.gameObject.SetActive(false);
-        blurCanvas.gameObject.SetActive(false);
+        // Register the scene loaded event to spawn the ball
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
-
 
     void Update()
     {
         if (SceneManager.GetActiveScene().name == "Always Active Scene") return;
-        
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             TogglePauseMenu();
         }
     }
-    
-    private bool isPauseMenuOpen = false;
 
+    private bool isPauseMenuOpen = false;
 
     public void TogglePauseMenu()
     {
@@ -212,12 +249,11 @@ public class UIManager : MonoBehaviour
             Time.timeScale = 0f;
         }
     }
+
     public void ResumeButton()
     {
         TogglePauseMenu();
     }
-
-    
 
     void UISwitchAnim(RectTransform hideWidget, RectTransform showWidget, bool moveLeft, UITransitionType transitionEffect, bool affectGameplay, float animDuration)
     {
@@ -327,9 +363,7 @@ public class UIManager : MonoBehaviour
                 OnUITransitionComplete(hideWidget, showCanvasGroup);
 
                 break;
-
         }
-
     }
 
     void OnUITransitionComplete(RectTransform hideWidget, CanvasGroup showCanvasGroup)
@@ -367,7 +401,6 @@ public class UIManager : MonoBehaviour
                     blurCanvas.blocksRaycasts = endAlpha == 0 ? false : true;
                     blurCanvas.gameObject.SetActive(endAlpha == 0 ? false : true);
                 }
-
             });
     }
 
