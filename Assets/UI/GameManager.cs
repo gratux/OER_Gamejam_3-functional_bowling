@@ -22,7 +22,11 @@ public class GameManager : MonoBehaviour
         new Level(2, 4, 3),
         new Level(3, 3, 3),
         new Level(4, 3, 3),
-        new Level(5, 3, 3)
+        new Level(5, 3, 3),
+        new Level(6, 3, 3),
+        new Level(7, 3, 3),
+        new Level(8, 3, 3),
+        new Level(9, 3, 3)
     };
 
     private void Awake()

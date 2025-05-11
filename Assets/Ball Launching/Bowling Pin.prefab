@@ -92,10 +92,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4424087823511952309}
-  - component: {fileID: 5668220166630588768}
   - component: {fileID: 3434957979974780971}
   - component: {fileID: 8096503369094877662}
   - component: {fileID: 178021147397091941}
+  - component: {fileID: 8415556628146097792}
   m_Layer: 0
   m_Name: Bowling Pin
   m_TagString: Untagged
@@ -119,29 +119,6 @@ Transform:
   - {fileID: 5522162166255227236}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
---- !u!136 &5668220166630588768
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3904151123962872079}
-  m_Material: {fileID: 13400000, guid: b54b7e0dcba2cfd44a75584c1bf62dda, type: 2}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 6.01917
-  m_Height: 38.161884
-  m_Direction: 2
-  m_Center: {x: 0, y: 0.16864324, z: 18.580952}
 --- !u!54 &3434957979974780971
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -199,3 +176,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collisionParticles: {fileID: 3458024069485726242, guid: 85dd56134c36cf2d2a4b24df90d1de56, type: 3}
   collisionTag: Player
+--- !u!64 &8415556628146097792
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3904151123962872079}
+  m_Material: {fileID: 13400000, guid: b54b7e0dcba2cfd44a75584c1bf62dda, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7222828565668539872, guid: 1effce88b88d1d64c865448652e19818, type: 3}
