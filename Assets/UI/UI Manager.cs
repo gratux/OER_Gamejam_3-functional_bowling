@@ -58,6 +58,7 @@ public class UIManager : MonoBehaviour
     }
     public void StatsMenuToLevelSelector() //TODO CHECK
     {
+        
         UISwitchAnim(statsLevelMenu, levelSelectorMenu, false, menuTransitionType, false, menuSwitchAnimDuration);
     }
     public void LevelSelectorToMainMenu() //TODO CHECK
@@ -141,6 +142,20 @@ public class UIManager : MonoBehaviour
         exitConfirmMenu.gameObject.SetActive(false);
         blurCanvas.gameObject.SetActive(false);
 
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        print("asdasd");
+
+    }
+    
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name != "Always Active Scene")
+        {
+            GameManager.Instance.SpawnBall();
+            Debug.Log("Ball spawned after scene loaded.");
+        }
+
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
     public void ReplayCurrentLevel()
     {
