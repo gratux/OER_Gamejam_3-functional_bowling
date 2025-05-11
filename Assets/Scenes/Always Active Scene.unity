@@ -603,7 +603,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0d439e0dafa4fd42b2e0c63a14ed4c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ballPrefab: {fileID: 3623561580912127457, guid: 9154aeeeda720eb4eb5bc47b3ab105a9, type: 3}
+  ballPrefab: {fileID: 6528283872821758386, guid: 9154aeeeda720eb4eb5bc47b3ab105a9, type: 3}
+  ballControlsPrefab: {fileID: 8382287004205174875, guid: e491de0ab9105a3409e23deb9c78f2f9, type: 3}
+  currentBall: {fileID: 0}
+  currentBallControls: {fileID: 0}
+  ballLaunchButton: {fileID: 1006159902}
   goldStarsLevelSelector:
   - {fileID: 781527006}
   - {fileID: 86641955}
@@ -621,6 +625,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1006159902 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7829384098347062624, guid: 360f2156f327ea24e84c0af424437058, type: 3}
+  m_PrefabInstance: {fileID: 432307135491970678}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1605880096
@@ -729,7 +744,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2458014365625000256, guid: 360f2156f327ea24e84c0af424437058, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2729505531804884532, guid: 360f2156f327ea24e84c0af424437058, type: 3}
       propertyPath: m_Name

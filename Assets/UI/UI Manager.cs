@@ -20,8 +20,6 @@ public class UIManager : MonoBehaviour
     public RectTransform levelSelectorMenu;
     public RectTransform pauseMenu;
 
-
-
     private Tweener _blurTween;
     private Tweener _hideWidgetTween;
     private Tweener _showWidgetTween;
@@ -146,17 +144,26 @@ public class UIManager : MonoBehaviour
         print("asdasd");
 
     }
-    
+
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         if (scene.name != "Always Active Scene")
         {
-            GameManager.Instance.SpawnBall();
-            Debug.Log("Ball spawned after scene loaded.");
-        }
+            // Create a spawn point if it doesn't exist
+            GameObject spawnPoint = GameObject.Find("SpawnPointBall");
+            if (spawnPoint == null)
+            {
+                spawnPoint = new GameObject("SpawnPointBall");
+                // Position it where you want your ball to spawn
+                spawnPoint.transform.position = new Vector3(-120, 1, 0); // Adjust as needed
+            }
 
-        SceneManager.sceneLoaded -= OnSceneLoaded;
+            GameManager.Instance.SpawnBall();
+            GameManager.Instance.SpawnBallControls();
+            Debug.Log("Ball spawned after scene loaded with custom spawn point.");
+        }
     }
+
     public void ReplayCurrentLevel()
     {
         Scene currentScene = SceneManager.GetActiveScene();

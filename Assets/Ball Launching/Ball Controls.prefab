@@ -113,8 +113,8 @@ MonoBehaviour:
   quadraticA: 0.2
   cubicA: 0.2
   linearA: 0.5
-  sineA: 13.8
-  sineB: 1.76
+  sineA: 45.5
+  sineB: 1.59
 --- !u!1 &5485314954389227786
 GameObject:
   m_ObjectHideFlags: 0
@@ -124,6 +124,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6767908323516556907}
+  - component: {fileID: 8382287004205174875}
   m_Layer: 0
   m_Name: Ball Controls
   m_TagString: Untagged
@@ -148,3 +149,17 @@ Transform:
   - {fileID: 5775156402416608851}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8382287004205174875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5485314954389227786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d04142aff9418f847a5e81e4868d0237, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trajectoryDisplay: {fileID: 311107868018211423}
+  ballLauncher: {fileID: 2749711386471376431}

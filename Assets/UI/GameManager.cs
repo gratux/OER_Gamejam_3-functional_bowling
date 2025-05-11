@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,9 +6,12 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     
-    public GameObject ballPrefab;
-    private GameObject currentBall;
-    
+    public Ball ballPrefab;
+    public BallControls ballControlsPrefab;
+    public Ball currentBall;
+    public BallControls currentBallControls;
+
+    public Button ballLaunchButton;
     
     public List<Level> levels = new List<Level>() // store level data
     {
@@ -19,8 +21,6 @@ public class GameManager : MonoBehaviour
         new Level(4, 3, 6),
         new Level(5, 3, 7)
     };
-    
-    
     
     private void Awake()
     {
@@ -62,8 +62,25 @@ public class GameManager : MonoBehaviour
         if (spawnPoint != null && ballPrefab != null)
         {
             currentBall = Instantiate(ballPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation);
-            currentBall.transform.localScale = Vector3.one * 0.25f; // 75% reduction size
-            print("instanciado");
+            print("instanciado ball");
+        }
+        else
+        {
+            print("not find spawnpoint");
+        }
+    }
+
+    public void SpawnBallControls()
+    {
+        GameObject spawnPoint = GameObject.Find("SpawnPointBall");
+
+        if (spawnPoint != null && ballControlsPrefab != null)
+        {
+            currentBallControls = Instantiate(ballControlsPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation);
+            print("instanciado ball controls");
+            currentBallControls.trajectoryDisplay.bowlingBall = currentBall;
+            currentBallControls.ballLauncher.bowlingBall = currentBall;
+            currentBallControls.ballLauncher.launchButton = ballLaunchButton;
         }
         else
         {
