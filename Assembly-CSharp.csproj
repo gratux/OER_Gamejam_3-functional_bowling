@@ -50,6 +50,7 @@
     <Compile Include="Assets\Scenes\TestSampleScene.cs" />
     <Compile Include="Assets\matvii develope\changescene.cs" />
     <Compile Include="Assets\UI\UI Manager.cs" />
+    <Compile Include="Assets\UI\GameManager.cs" />
     <Compile Include="Assets\Ball Launching\Bowling Ball Physics.cs" />
     <Compile Include="Assets\Particles\ParticleAtCollision.cs" />
     <Compile Include="Assets\matvii develope\endscene.cs" />

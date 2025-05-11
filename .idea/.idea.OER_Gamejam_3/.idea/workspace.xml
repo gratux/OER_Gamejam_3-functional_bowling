@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9dfd052b-545a-40e3-9c42-fb5cc8d5b50f" name="Changes" comment="" />
+    <list default="true" id="9dfd052b-545a-40e3-9c42-fb5cc8d5b50f" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.OER_Gamejam_3/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OER_Gamejam_3/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assembly-CSharp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Always Active Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Always Active Scene.unity" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -99,6 +103,8 @@
       <option name="presentableId" value="Default" />
       <updated>1746879582206</updated>
       <workItem from="1746879592120" duration="6717000" />
+      <workItem from="1746897473414" duration="412000" />
+      <workItem from="1746950607112" duration="1105000" />
     </task>
     <servers />
   </component>
