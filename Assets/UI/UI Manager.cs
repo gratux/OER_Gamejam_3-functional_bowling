@@ -44,19 +44,21 @@ public class UIManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    private void Start()
-    {
-        InitializeMainMenu();
-    }
 
     public void GameToStatsMenu(int starsEarned) //Game -> StatsLevel Menu -> Main Menu
     {
+        TogglePauseMenu();
+        mainMenu.gameObject.SetActive(false);
         ShowLevelStars(starsEarned);
-        UISwitchAnim(inGameMenu, statsLevelMenu, true, menuTransitionType, false, menuSwitchAnimDuration);
+        statsLevelMenu.gameObject.SetActive(true);
     }
     public void StatsMenuToMainMenu() //TODO CHECK
     {
         UISwitchAnim(statsLevelMenu, mainMenu, false, menuTransitionType, false, menuSwitchAnimDuration);
+    }
+    public void StatsMenuToLevelSelector() //TODO CHECK
+    {
+        UISwitchAnim(statsLevelMenu, levelSelectorMenu, false, menuTransitionType, false, menuSwitchAnimDuration);
     }
     public void LevelSelectorToMainMenu() //TODO CHECK
     {
@@ -126,6 +128,7 @@ public class UIManager : MonoBehaviour
         Application.Quit();
     }
 
+
     public void LoadLevel(int levelNum)
     {
         //UISwitchAnim(levelSelectorMenu, levelName, true, menuTransitionType, false, menuSwitchAnimDuration);
@@ -139,6 +142,19 @@ public class UIManager : MonoBehaviour
         blurCanvas.gameObject.SetActive(false);
 
     }
+    public void ReplayCurrentLevel()
+    {
+        Scene currentScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(currentScene.buildIndex, LoadSceneMode.Single);
+
+        levelSelectorMenu.gameObject.SetActive(false);
+        mainMenu.gameObject.SetActive(false);
+        inGameMenu.gameObject.SetActive(false);
+        statsLevelMenu.gameObject.SetActive(false);
+        exitConfirmMenu.gameObject.SetActive(false);
+        blurCanvas.gameObject.SetActive(false);
+    }
+
 
     void Update()
     {

@@ -321,18 +321,13 @@
       <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.62f1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
     </Reference>
     <Reference Include="ReportGeneratorMerged">
-      <HintPath>Library\PackageCache\com.unity.testtools.codecoverage@1.2.6\lib\ReportGenerator\ReportGeneratorMerged.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>C:\Users\chemi\Documents\chemi\git\OER_Gamejam_3\Library\PackageCache\com.unity.testtools.codecoverage@1.2.6\lib\ReportGenerator\ReportGeneratorMerged.dll</HintPath>
     </Reference>
     <Reference Include="DOTween">
       <HintPath>C:\Users\chemi\Documents\chemi\git\OER_Gamejam_3\Assets\Plugins\Demigiant\DOTween\DOTween.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
       <HintPath>C:\Users\chemi\Documents\chemi\git\OER_Gamejam_3\Library\PackageCache\com.unity.visualscripting@1.9.4\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@1.9.4\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.62f1\Editor\Data\NetStandard\ref\2.1.0\netstandard.dll</HintPath>
@@ -707,8 +702,7 @@
       <HintPath>C:\Users\chemi\Documents\chemi\git\OER_Gamejam_3\Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Splines.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Splines.Editor.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>C:\Users\chemi\Documents\chemi\git\OER_Gamejam_3\Library\ScriptAssemblies\Unity.Splines.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.EditorCoroutines.Editor">
       <HintPath>C:\Users\chemi\Documents\chemi\git\OER_Gamejam_3\Library\ScriptAssemblies\Unity.EditorCoroutines.Editor.dll</HintPath>
@@ -718,10 +712,6 @@
     </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>C:\Users\chemi\Documents\chemi\git\OER_Gamejam_3\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Performance.Profile-Analyzer.Editor">
       <HintPath>C:\Users\chemi\Documents\chemi\git\OER_Gamejam_3\Library\ScriptAssemblies\Unity.Performance.Profile-Analyzer.Editor.dll</HintPath>
@@ -733,8 +723,7 @@
       <HintPath>C:\Users\chemi\Documents\chemi\git\OER_Gamejam_3\Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.OpenCover.Model.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PlasticSCM.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>C:\Users\chemi\Documents\chemi\git\OER_Gamejam_3\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.State.Editor">
       <HintPath>C:\Users\chemi\Documents\chemi\git\OER_Gamejam_3\Library\ScriptAssemblies\Unity.VisualScripting.State.Editor.dll</HintPath>
@@ -757,16 +746,11 @@
     <Reference Include="Unity.Splines">
       <HintPath>C:\Users\chemi\Documents\chemi\git\OER_Gamejam_3\Library\ScriptAssemblies\Unity.Splines.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Splines">
-      <HintPath>Library\ScriptAssemblies\Unity.Splines.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>C:\Users\chemi\Documents\chemi\git\OER_Gamejam_3\Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Core">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Core.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>C:\Users\chemi\Documents\chemi\git\OER_Gamejam_3\Library\ScriptAssemblies\Unity.VisualScripting.Core.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>C:\Users\chemi\Documents\chemi\git\OER_Gamejam_3\Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
@@ -780,10 +764,6 @@
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:\Users\chemi\Documents\chemi\git\OER_Gamejam_3\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.VisualScripting.State">
       <HintPath>C:\Users\chemi\Documents\chemi\git\OER_Gamejam_3\Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
     </Reference>
@@ -791,8 +771,7 @@
       <HintPath>C:\Users\chemi\Documents\chemi\git\OER_Gamejam_3\Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Sprite.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>C:\Users\chemi\Documents\chemi\git\OER_Gamejam_3\Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Flow">
       <HintPath>C:\Users\chemi\Documents\chemi\git\OER_Gamejam_3\Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll</HintPath>
