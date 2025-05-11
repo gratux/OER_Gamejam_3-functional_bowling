@@ -1794,13 +1794,14 @@ MonoBehaviour:
   functionCard_3: {fileID: 5026847134351676297}
   functionSpriteList:
   - functionType: 0
-    sprite: {fileID: 0}
+    sprite: {fileID: 21300000, guid: e8bd246fe00b82b489de2d990b18ec31, type: 3}
   - functionType: 1
     sprite: {fileID: 0}
   - functionType: 2
-    sprite: {fileID: 0}
+    sprite: {fileID: 21300000, guid: 519db3bf23e3ba94fb7cb121f4509329, type: 3}
   - functionType: 3
-    sprite: {fileID: 0}
+    sprite: {fileID: 21300000, guid: b665f81c134a93347954020ecea27b89, type: 3}
+  initialFunctions: 000000000200000003000000
 --- !u!1 &7761448152036686682
 GameObject:
   m_ObjectHideFlags: 0
